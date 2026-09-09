@@ -1,0 +1,99 @@
+{
+  "energy": {
+    "label": "Kiek šiandien noriu planuoti?",
+    "options": [
+      {
+        "id": "no-planning",
+        "title": "Nieko planuoti",
+        "description": "Tiesiog nuvažiuojam.",
+        "icon": "circle"
+      },
+      {
+        "id": "some-planning",
+        "title": "Pasiimam dėžutę",
+        "description": "Užtenka susimesti užkandžius ir vandenį.",
+        "icon": "half-circle"
+      },
+      {
+        "id": "full-planning",
+        "title": "Reikia pasiruošti",
+        "description": "Reikia daiktų, bilietų, rezervacijos ar daugiau pasiruošimo.",
+        "icon": "full-circle"
+      }
+    ]
+  },
+  "place": {
+    "label": "Kur norisi būti?",
+    "control": "segmented",
+    "options": [
+      {
+        "id": "indoor",
+        "title": "Viduje",
+        "icon": "home"
+      },
+      {
+        "id": "outdoor",
+        "title": "Lauke",
+        "icon": "tree"
+      }
+    ]
+  },
+  "vibe": {
+    "label": "Ko šiandien norisi?",
+    "options": [
+      {
+        "id": "calm",
+        "title": "Ramiai pabūti"
+      },
+      {
+        "id": "fun",
+        "title": "Kažko smagaus"
+      },
+      {
+        "id": "adventure",
+        "title": "Mažo nuotykio"
+      },
+      {
+        "id": "summer",
+        "title": "Vasaros"
+      },
+      {
+        "id": "wow",
+        "title": "Kad būtų „WOW!“"
+      }
+    ]
+  },
+  "category": {
+    "label": "Ką norisi veikti?",
+    "options": [
+      {
+        "id": "all",
+        "title": "Visi"
+      },
+      {
+        "id": "hiking",
+        "title": "Žygiai"
+      },
+      {
+        "id": "lakes",
+        "title": "Ežerai"
+      },
+      {
+        "id": "playground",
+        "title": "Aikštelės"
+      },
+      {
+        "id": "museum",
+        "title": "Muziejai"
+      },
+      {
+        "id": "activity",
+        "title": "Veiklos"
+      },
+      {
+        "id": "food",
+        "title": "Maistas"
+      }
+    ]
+  }
+}
