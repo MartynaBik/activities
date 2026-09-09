@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <title>Ką nuveikti ŠIANDIEN? | Vilniaus maži nuotykiai 2-3 m. vaikams</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #F7F5EC;
             --graphite: #3F3E3C;
-            
+
             /* Prigesintos, natūralios spalvos */
             --col-hiking: #3E6B89;
-            --col-museum: #B85D38;
-            --col-playground: #D1A153;
-            --col-activitie: #C76B5C;
+            --col-activity: #C76B5C;
             --col-food: #4A7C59;
             --col-lakes: #A3B5D6;
+            --col-museum: #B85D38;
             --col-other: #2C4C64;
+            --col-playground: #D1A153;
         }
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -45,78 +46,243 @@
             font-weight: 500;
         }
 
-        /* Energijos lygio pasirinkimo sekcija */
-        .energy-section {
-            text-align: center;
-            margin-bottom: 25px;
+        /* Filtravimo sekcija */
+        #filtersGrid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0;
+            margin-bottom: 40px;
         }
-        .energy-section h2 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 12px;
+
+        @media (min-width: 768px) {
+            #filtersGrid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0;
+            }
+        }
+
+        .filter-group {
+            border: 2px solid var(--graphite);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 4px 4px 0px 0px var(--graphite);
+        }
+
+        .filter-group.primary {
+            border-width: 3px;
+            box-shadow: 6px 6px 0px 0px var(--graphite);
+        }
+        
+        .filter-group.energy-filter {
+            margin-bottom: 0;
+        }
+
+        .category-place-container .filter-group {
+            margin-bottom: 0;
+        }
+        
+        .filter-group.energy-filter,
+        .filter-group.vibe-filter {
+            text-align: left;
+        }
+
+        .filter-group.energy-filter .filter-options,
+        .filter-group.vibe-filter .filter-options {
+            justify-content: flex-start;
+        }
+
+        .filter-group.energy-filter,
+        .filter-group.vibe-filter,
+        .filter-group.category-place-container,
+        .filter-group.category-filter,
+        .filter-group.place-filter {
+            border: none;
+            box-shadow: none;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        @media (min-width: 768px) {
+            .filter-group.category-place-container {
+                grid-column: 1 / -1;
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+            }
+            .category-place-container .place-filter {
+                text-align: left;
+            }
+            .category-place-container .place-filter .filter-options {
+                justify-content: flex-start;
+            }
+        }
+
+        .filter-group h2 {
+            font-size: 0.85rem;
+            font-weight: 800;
+            margin: 0 0 12px 0;
             color: var(--graphite);
+            /* text-transform: uppercase; */
+            letter-spacing: 0.03em;
+            text-align: left;
         }
-        .energy-filters {
+
+        .filter-options {
             display: flex;
-            justify-content: center;
-            gap: 10px;
             flex-wrap: wrap;
-            margin-bottom: 20px;
+            gap: 8px;
+            justify-content: flex-start;
         }
-        .energy-btn {
-            background-color: #FFFFFF;
+
+        /* Kompaktiški mygtukai */
+        .btn-opt {
             border: 2px solid var(--graphite);
             color: var(--graphite);
-            padding: 8px 16px;
+            padding: 6px 12px;
             border-radius: 50px;
             font-family: inherit;
             font-size: 0.85rem;
             font-weight: 700;
             cursor: pointer;
-            box-shadow: 2px 2px 0px 0px var(--graphite);
             transition: all 0.15s ease;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
-        .energy-btn:hover {
+
+        .btn-opt:hover {
             transform: translate(-1px, -1px);
-            box-shadow: 3px 3px 0px 0px var(--graphite);
+            box-shadow: 2px 2px 0px 0px var(--graphite);
         }
-        .energy-btn.active {
+
+        .btn-opt.active {
             background-color: var(--graphite);
             color: #FFFFFF;
         }
 
-        /* Pagrindiniai kategorijų filtrai */
-        .filters-container {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
+        /* Specifinis stilius vibe filtrams (Ko šiandien norisi?) */
+        .vibe-filter .filter-options {
+            display: block;
+            width: 100%;
         }
-        .filter-btn {
-            background-color: #FFFFFF;
-            border: 2px solid var(--graphite);
-            color: var(--graphite);
-            padding: 10px 18px;
+
+        .category-menu-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .category-menu-item {
+            --link-background-color: #cbe1ed;
+            --link-text-color: #00559b;
+            --link-shadow-color: #1a365d;
+            position: relative;
+        }
+
+        .energy-filter .category-menu-item {
+            --link-background-color: #fce7b2;
+            --link-text-color: #8c6d1f;
+            --link-shadow-color: #5e4a15;
+        }
+
+        .category-menu-link {
+            position: relative;
+            display: inline-block;
+            text-decoration: none;
+            transition: transform 0.15s ease;
+        }
+
+        .category-menu-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            background-color: var(--link-background-color);
+            padding: 10px 20px;
             border-radius: 50px;
-            font-family: inherit;
-            font-size: 0.95rem;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 3px 3px 0px 0px var(--graphite);
-            transition: all 0.15s ease;
+        }
+
+        .category-menu-text {
+            color: var(--link-text-color);
+            font-weight: 800;
+            font-size: 0.85rem;
             display: flex;
             align-items: center;
-            gap: 8px;
+            justify-content: flex-start;
+            gap: 6px;
+            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
         }
-        .filter-btn:hover {
-            transform: translate(-1px, -1px);
-            box-shadow: 4px 4px 0px 0px var(--graphite);
+
+        .category-menu-link-shadow {
+            position: absolute;
+            top: 4px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--link-shadow-color);
+            border-radius: 50px;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.15s ease;
         }
-        .filter-btn.active {
+
+        .category-menu-link:hover {
+            transform: translateY(-2px);
+        }
+
+        .category-menu-link.active .category-menu-content {
+            background-color: var(--link-text-color);
+        }
+        
+        .category-menu-link.active .category-menu-text {
+            color: #FFFFFF;
+        }
+
+        .category-menu-link.active .category-menu-link-shadow {
+            opacity: 1;
+        }
+
+        .category-menu-link.active {
+            transform: translateY(-2px);
+        }
+
+
+        /* Segmentuotas perjungiklis (Kur norisi būti?) */
+        .segmented-toggle {
+            display: inline-flex;
+            border: 2px solid var(--graphite);
+            border-radius: 50px;
+            overflow: hidden;
+        }
+
+        .seg-opt {
+            color: var(--graphite);
+            border: none;
+            padding: 6px 15px;
+            font-family: inherit;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: all 0.15s ease;
+        }
+
+        .seg-opt + .seg-opt {
+            border-left: 2px solid var(--graphite);
+        }
+
+        .seg-opt.active {
             background-color: var(--graphite);
             color: #FFFFFF;
         }
@@ -142,7 +308,7 @@
         .card[data-category="hiking"] { background-color: var(--col-hiking); }
         .card[data-category="museum"] { background-color: var(--col-museum); }
         .card[data-category="playground"] { background-color: var(--col-playground); color: #2B2D42; }
-        .card[data-category="activitie"] { background-color: var(--col-activitie); }
+        .card[data-category="activity"] { background-color: var(--col-activity); }
         .card[data-category="food"] { background-color: var(--col-food); }
         .card[data-category="lakes"] { background-color: var(--col-lakes); color: #2B2D42; }
         .card[data-category="lakes"] a { color: #1a365d; }
@@ -162,7 +328,7 @@
             background: rgba(0, 0, 0, 0.06);
         }
 
-        /* Kortelės lygio piktograma footeryje (Be border, didesnė) */
+        /* Kortelės lygio piktograma footeryje */
         .card-footer {
             margin-top: 20px;
             padding-top: 16px;
@@ -187,6 +353,21 @@
         .flat-svg-icon {
             width: 20px;
             height: 20px;
+        }
+        .energy-icon-badge svg {
+            width: 20px;
+            height: 20px;
+        }
+        .chip-icon {
+            display: inline-flex;
+            align-items: center;
+            width: 14px;
+            height: 14px;
+        }
+        .chip-icon svg,
+        .place-icon svg {
+            width: 100%;
+            height: 100%;
         }
 
         .card-header-row {
@@ -218,7 +399,7 @@
             align-items: center;
             gap: 6px;
         }
-        .weather-icon {
+        .place-icon {
             display: inline-flex;
             align-items: center;
             vertical-align: middle;
@@ -262,698 +443,238 @@
         <p>Maži nuotykiai po darželio (2–3 m. vaikams)</p>
     </header>
 
-    <!-- Energijos lygio tekstas ir filtrai -->
-    <div class="energy-section">
-        <h2>Kiek aš šiandien turiu energijos?</h2>
-        <div class="energy-filters">
-            <button class="energy-btn active" data-energy="all">Visi</button>
-            <button class="energy-btn" data-energy="green">
-                <svg style="width:18px;height:18px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="12" cy="12" r="9"/></svg>
-                Nulis planavimo – tiesiog nuvažiuoji.
-            </button>
-            <button class="energy-btn" data-energy="yellow">
-                <svg style="width:18px;height:18px;" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0 0 20V2z"/></svg>
-                Reikia pasiimti kelis daiktus – pledas, dviratukas ir pan.
-            </button>
-            <button class="energy-btn" data-energy="red">
-                <svg style="width:18px;height:18px;" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
-                Reikia šiek tiek pasiruošti – bilietai, rezervacija, plaukimas ir t. t.
-            </button>
-        </div>
-    </div>
+    <!-- Filtrai generuojami iš filters.json -->
+    <div id="filtersGrid"></div>
 
-    <!-- Pagrindiniai kategorijų filtrai -->
-    <div class="filters-container">
-        <button class="filter-btn active" data-filter="all">Visi</button>
-        <button class="filter-btn" data-filter="hiking">Žygiai</button>
-        <button class="filter-btn" data-filter="lakes">Ežerai</button>
-        <button class="filter-btn" data-filter="playground">Aikštelės</button>
-        <button class="filter-btn" data-filter="museum">Muziejus</button>
-        <button class="filter-btn" data-filter="activitie">Veiklos</button>
-        <button class="filter-btn" data-filter="food">Maistas</button>
-    </div>
-
-    <div class="grid-container" id="gridContainer">
-
-        <!-- 1 (Yellow) -->
-        <div class="card" data-category="playground" data-energy="yellow">
-            <div class="card-content">
-                <div class="card-header-row">
-                    <h3>Nameliai medžiuose Vytenio parke</h3>
-                </div>
-                <div class="details-line">⏱️ 1–2 val. | <span class="weather-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span> Gražiam orui</div>
-                <div class="kids-info">
-                    <strong>Ką veikiam:</strong> Einam tiesiai į aikštelę, leidžiam vaikui laipioti, suptis, slėptis ir tyrinėti namelius. Tėvams – kava išsinešimui.<br>
-                    <strong>Pasiimti:</strong> Vandens, mažą užkandį.<br>
-                    <strong>2–3 m.:</strong> Labai tinka. Nereikia jokio papildomo plano.
-                </div>
-                <div class="task-box"><strong>Užduotis:</strong> „Surask namelį, į kurį galima užlipti.“</div>
-            </div>
-            <div class="card-footer">
-                <span class="energy-icon-badge" title="Reikia pasiimti kelis daiktus">
-                    <svg class="flat-svg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0 0 20V2z"/></svg>
-                </span>
-                <a href="https://vytenioparkas.lt" target="_blank" class="btn">Atidaryti žemėlapyje →</a>
-            </div>
-        </div>
-
-        <!-- 2 (Yellow) -->
-        <div class="card" data-category="lakes" data-energy="yellow">
-            <div class="card-content">
-                <div class="card-header-row">
-                    <h3>Smėlis ir maudynės Tapeliuose</h3>
-                </div>
-                <div class="details-line">⏱️ 2–3 val. | <span class="weather-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span> Šiltai dienai</div>
-                <div class="kids-info">
-                    <strong>Ką veikiam:</strong> Smėlis, vanduo, akmenukų rinkimas, basos kojos ir užkandžiai ant pledo.<br>
-                    <strong>Pasiimti:</strong> Maudymosi daiktus, rankšluostį, pledą, užkandžių, atsarginius drabužius.<br>
-                    <strong>2–3 m.:</strong> Vienas geriausių variantų vasarai.
-                </div>
-                <div class="task-box"><strong>Užduotis:</strong> Surinkti 5 gražius akmenukus arba pagaliukus.</div>
-            </div>
-            <div class="card-footer">
-                <span class="energy-icon-badge" title="Reikia pasiimti kelis daiktus">
-                    <svg class="flat-svg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0 0 20V2z"/></svg>
-                </span>
-                <a href="https://www.google.com/maps/search/?api=1&query=Tapelių+paplūdimys" target="_blank" class="btn">Atidaryti žemėlapyje →</a>
-            </div>
-        </div>
-
-        <!-- 3 (Red) -->
-        <div class="card" data-category="museum" data-energy="red">
-            <div class="card-content">
-                <div class="card-header-row">
-                    <h3>Mokslas ir mygtukų spaudymas</h3>
-                </div>
-                <div class="details-line">⏱️ 1–2 val. | <span class="weather-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg></span> Bet kokiam orui</div>
-                <div class="kids-info">
-                    <strong>Ką veikiam:</strong> Einam ten, kur galima spaudyti, sukti, traukti ir stebėti, o ne bandome vaikui paaiškinti mokslą. 😄<br>
-                    <strong>Pasiimti:</strong> Nieko ypatingo.<br>
-                    <strong>2–3 m.:</strong> Rinktis trumpą apsilankymą, nes dėmesys greitai keičiasi.
-                </div>
-                <div class="task-box"><strong>Užduotis:</strong> „Surask 3 dalykus, kuriuos galima paspausti.“</div>
-            </div>
-            <div class="card-footer">
-                <span class="energy-icon-badge" title="Reikia šiek tiek pasiruošti">
-                    <svg class="flat-svg-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
-                </span>
-                <a href="https://www.google.com/maps/search/?api=1&query=Energetikos+ir+technikos+muziejus" target="_blank" class="btn">Atidaryti žemėlapyje →</a>
-            </div>
-        </div>
-
-        <!-- 4 (Yellow) -->
-        <div class="card" data-category="hiking" data-energy="yellow">
-            <div class="card-content">
-                <div class="card-header-row">
-                    <h3>Lentelės ir pelkės mistika Varnikiuose</h3>
-                </div>
-                <div class="details-line">⏱️ 2–3 val. | <span class="weather-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span> Gražiam orui</div>
-                <div class="kids-info">
-                    <strong>Ką veikiam:</strong> Trumpas pasivaikščiojimas takais, žiūrim į vandenį, medžius, samaną, klausomės paukščių.<br>
-                    <strong>Pasiimti:</strong> Vandens, užkandžių, patogius batus.<br>
-                    <strong>2–3 m.:</strong> Labai gerai, jei vaikui patinka vaikščioti. Nesitikėti, kad nueis visą taką.
-                </div>
-                <div class="task-box"><strong>Užduotis:</strong> „Kas pirmas pamatys vandenį? O didelį medį?“</div>
-            </div>
-            <div class="card-footer">
-                <span class="energy-icon-badge" title="Reikia pasiimti kelis daiktus">
-                    <svg class="flat-svg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0 0 20V2z"/></svg>
-                </span>
-                <a href="https://www.google.com/maps/search/?api=1&query=Varnikų+pažintinis+takas" target="_blank" class="btn">Atidaryti žemėlapyje →</a>
-            </div>
-        </div>
-
-        <!-- 5 (Green) -->
-        <div class="card" data-category="food" data-energy="green">
-            <div class="card-content">
-                <div class="card-header-row">
-                    <h3>Kukulių pietūs IKEA</h3>
-                </div>
-                <div class="details-line">⏱️ 1–2 val. | <span class="weather-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg></span> Bet kokiam orui</div>
-                <div class="kids-info">
-                    <strong>Ką veikiam:</strong> Važiuojam ne „į IKEA apsipirkti“, o valgyti kukulių ir patirti nuotykį.<br>
-                    <strong>Pasiimti:</strong> Nieko.<br>
-                    <strong>2–3 m.:</strong> Puikus variantas, kai tėvai pavargę ir norisi beveik nulio planavimo.
-                </div>
-                <div class="task-box"><strong>Užduotis:</strong> Išsirinkti vieną dalyką, kuris labiausiai patinka IKEA.</div>
-            </div>
-            <div class="card-footer">
-                <span class="energy-icon-badge" title="Nulis planavimo">
-                    <svg class="flat-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="12" cy="12" r="9"/></svg>
-                </span>
-                <a href="https://www.google.com/maps/search/?api=1&query=IKEA+Vilnius" target="_blank" class="btn">Atidaryti žemėlapyje →</a>
-            </div>
-        </div>
-
-        <!-- 6 (Red) -->
-        <div class="card" data-category="activitie" data-energy="red">
-            <div class="card-content">
-                <div class="card-header-row">
-                    <h3>Kairėnų Botanikos sodas</h3>
-                </div>
-                <div class="details-line">⏱️ 2–3 val. | <span class="weather-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span> Gražiam orui</div>
-                <div class="kids-info">
-                    <strong>Ką veikiam:</strong> Vaikštom tarp augalų, ieškom didžiausio medžio, žiūrim į gėles ir vabzdžius.<br>
-                    <strong>Pasiimti:</strong> Užkandžių, vandens.<br>
-                    <strong>2–3 m.:</strong> Labai geras amžius – vaikui nereikia suprasti, kas yra botanikos sodas.
-                </div>
-                <div class="task-box"><strong>Užduotis:</strong> „Surask geltoną gėlę, didžiausią lapą ir vabzdį.“</div>
-            </div>
-            <div class="card-footer">
-                <span class="energy-icon-badge" title="Reikia šiek tiek pasiruošti">
-                    <svg class="flat-svg-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
-                </span>
-                <a href="https://www.google.com/maps/search/?api=1&query=Kairėnų+Botanikos+sodas" target="_blank" class="btn">Atidaryti žemėlapyje →</a>
-            </div>
-        </div>
-
-        <!-- 7 (Yellow) -->
-        <div class="card" data-category="hiking" data-energy="yellow">
-            <div class="card-content">
-                <div class="card-header-row">
-                    <h3>Piknikas ir traukiniai prie Rokantiškių</h3>
-                </div>
-                <div class="details-line">⏱️ 1,5–2 val. | <span class="weather-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span> Gražiam orui</div>
-                <div class="kids-info">
-                    <strong>Ką veikiam:</strong> Pledas, užkandžiai ir laukiam traukinio.<br>
-                    <strong>Pasiimti:</strong> Pledą, užkandžių, vandens.<br>
-                    <strong>2–3 m.:</strong> Labai gerai, nes traukinio laukimas pats savaime tampa žaidimu.
-                </div>
-                <div class="task-box"><strong>Užduotis:</strong> „Kokios spalvos bus kitas traukinys?“</div>
-            </div>
-            <div class="card-footer">
-                <span class="energy-icon-badge" title="Reikia pasiimti kelis daiktus">
-                    <svg class="flat-svg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0 0 20V2z"/></svg>
-                </span>
-                <a href="https://www.google.com/maps/search/?api=1&query=Rokantiškių+piliakalnis" target="_blank" class="btn">Atidaryti žemėlapyje →</a>
-            </div>
-        </div>
-
-        <!-- 8 (Yellow) -->
-        <div class="card" data-category="lakes" data-energy="yellow">
-            <div class="card-content">
-                <div class="card-header-row">
-                    <h3>Ramios popietės Dvarčionių ežere</h3>
-                </div>
-                <div class="details-line">⏱️ 1,5–2 val. | <span class="weather-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span> Gražiam orui</div>
-                <div class="kids-info">
-                    <strong>Ką veikiam:</strong> Vanduo, pasivaikščiojimas, akmenukų mėtymas, užkandžiai.<br>
-                    <strong>Pasiimti:</strong> Vandens, užkandžių, pledą.<br>
-                    <strong>2–3 m.:</strong> Geras lėtos popietės variantas.
-                </div>
-                <div class="task-box"><strong>Užduotis:</strong> Rasti „patį gražiausią“ akmenuką.</div>
-            </div>
-            <div class="card-footer">
-                <span class="energy-icon-badge" title="Reikia pasiimti kelis daiktus">
-                    <svg class="flat-svg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0 0 20V2z"/></svg>
-                </span>
-                <a href="https://www.google.com/maps/search/?api=1&query=Dvarčionių+ežeras" target="_blank" class="btn">Atidaryti žemėlapyje →</a>
-            </div>
-        </div>
-
-        <!-- 9 (Green) -->
-        <div class="card" data-category="playground" data-energy="green">
-            <div class="card-content">
-                <div class="card-header-row">
-                    <h3>Moderni aikštelė Reformatų sode</h3>
-                </div>
-                <div class="details-line">⏱️ 1–1,5 val. | <span class="weather-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span> Sausam orui</div>
-                <div class="kids-info">
-                    <strong>Ką veikiam:</strong> Tiesiai į aikštelę, o po to trumpas pasivaikščiojimas po Senamiestį.<br>
-                    <strong>Pasiimti:</strong> Nieko ypatingo.<br>
-                    <strong>2–3 m.:</strong> Idealu, kai po darželio norisi greito ir paprasto išėjimo.
-                </div>
-                <div class="task-box"><strong>Užduotis:</strong> „Parodyk, kur aukščiausia vieta.“</div>
-            </div>
-            <div class="card-footer">
-                <span class="energy-icon-badge" title="Nulis planavimo">
-                    <svg class="flat-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="12" cy="12" r="9"/></svg>
-                </span>
-                <a href="https://www.google.com/maps/search/?api=1&query=Reformatų+sodas+Vilnius" target="_blank" class="btn">Atidaryti žemėlapyje →</a>
-            </div>
-        </div>
-
-        <!-- 10 (Yellow) -->
-        <div class="card" data-category="hiking" data-energy="yellow">
-            <div class="card-content">
-                <div class="card-header-row">
-                    <h3>Pūčkorių atodanga ir upės pakrantė</h3>
-                </div>
-                <div class="details-line">⏱️ 2–3 val. | <span class="weather-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span> Gražiam orui</div>
-                <div class="kids-info">
-                    <strong>Ką veikiam:</strong> Atodanga → miško takas → upė → užkandis.<br>
-                    <strong>Pasiimti:</strong> Vandens, užkandžių, patogius batus.<br>
-                    <strong>2–3 m.:</strong> Laikytis trumpesnio maršruto, nes visas pasivaikščiojimas gali būti per daug.
-                </div>
-                <div class="task-box"><strong>Užduotis:</strong> „Surask upę ir didžiausią medį.“</div>
-            </div>
-            <div class="card-footer">
-                <span class="energy-icon-badge" title="Reikia pasiimti kelis daiktus">
-                    <svg class="flat-svg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0 0 20V2z"/></svg>
-                </span>
-                <a href="https://www.google.com/maps/search/?api=1&query=Pūčkorių+atodanga" target="_blank" class="btn">Atidaryti žemėlapyje →</a>
-            </div>
-        </div>
-
-        <!-- 11 (Red) -->
-        <div class="card" data-category="museum" data-energy="red">
-            <div class="card-content">
-                <div class="card-header-row">
-                    <h3>Geležinkelių muziejus + vagonai</h3>
-                </div>
-                <div class="details-line">⏱️ 1–2 val. | <span class="weather-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg></span> Bet kokiam orui</div>
-                <div class="kids-info">
-                    <strong>Ką veikiam:</strong> Traukiniai, vagonai, stotis, dideli ratai ir daug „žiūrėk!“.<br>
-                    <strong>Pasiimti:</strong> Nieko.<br>
-                    <strong>2–3 m.:</strong> Ypač gerai traukinių gerbėjams.
-                </div>
-                <div class="task-box"><strong>Užduotis:</strong> „Surask didžiausią traukinį.“</div>
-            </div>
-            <div class="card-footer">
-                <span class="energy-icon-badge" title="Reikia šiek tiek pasiruošti">
-                    <svg class="flat-svg-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
-                </span>
-                <a href="https://ltgmuziejus.lt" target="_blank" class="btn">Atidaryti žemėlapyje →</a>
-            </div>
-        </div>
-
-        <!-- 12 (Yellow) -->
-        <div class="card" data-category="lakes" data-energy="yellow">
-            <div class="card-content">
-                <div class="card-header-row">
-                    <h3>Vakaro saulėlydis Gelūžėje</h3>
-                </div>
-                <div class="details-line">⏱️ 2–3 val. | <span class="weather-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span> Šiltam vakarui</div>
-                <div class="kids-info">
-                    <strong>Ką veikiam:</strong> Paplūdimys → vanduo → užkandžiai → saulėlydis.<br>
-                    <strong>Pasiimti:</strong> Pledą, vakarienę, vandens, maudymosi daiktus.<br>
-                    <strong>2–3 m.:</strong> Puikus būdas padaryti „ypatingą“ paprastą vakarą.
-                </div>
-                <div class="task-box"><strong>Užduotis:</strong> Stebėti, kaip keičiasi dangaus spalva.</div>
-            </div>
-            <div class="card-footer">
-                <span class="energy-icon-badge" title="Reikia pasiimti kelis daiktus">
-                    <svg class="flat-svg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0 0 20V2z"/></svg>
-                </span>
-                <a href="https://www.google.com/maps/search/?api=1&query=Gelūžės+ežeras+Pilaitė" target="_blank" class="btn">Atidaryti žemėlapyje →</a>
-            </div>
-        </div>
-
-        <!-- 13 (Red) -->
-        <div class="card" data-category="activitie" data-energy="red">
-            <div class="card-content">
-                <div class="card-header-row">
-                    <h3>Vakarinis traukinys į Naująją Vilnią</h3>
-                </div>
-                <div class="details-line">⏱️ 2–3 val. | <span class="weather-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg></span> Bet kokiam orui</div>
-                <div class="kids-info">
-                    <strong>Ką veikiam:</strong> Traukiniu važiuojam kelias stoteles → išlipam → pasivaikštom → randam aikštelę / užkandį → grįžtam.<br>
-                    <strong>Pasiimti:</strong> Užkandį ir vandens.<br>
-                    <strong>2–3 m.:</strong> Čia pats važiavimas yra pramoga.
-                </div>
-                <div class="task-box"><strong>Užduotis:</strong> „Susirask vietą prie lango ir skaičiuok traukinius.“</div>
-            </div>
-            <div class="card-footer">
-                <span class="energy-icon-badge" title="Reikia šiek tiek pasiruošti">
-                    <svg class="flat-svg-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
-                </span>
-                <a href="https://www.google.com/maps/search/?api=1&query=Naujosios+Vilnios+geležinkelio+stotis" target="_blank" class="btn">Atidaryti žemėlapyje →</a>
-            </div>
-        </div>
-
-        <!-- 14 (Red) -->
-        <div class="card" data-category="playground" data-energy="red">
-            <div class="card-content">
-                <div class="card-header-row">
-                    <h3>Šakalinio pasakų miškas</h3>
-                </div>
-                <div class="details-line">⏱️ 1,5–2,5 val. | <span class="weather-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span> Gražiam orui</div>
-                <div class="kids-info">
-                    <strong>Ką veikiam:</strong> Einam miško taku ir apsimetam, kad ieškom miško gyventojų.<br>
-                    <strong>Pasiimti:</strong> Užkandžių, vandens.<br>
-                    <strong>2–3 m.:</strong> Geriau trumpas pasivaikščiojimas nei bandymas įveikti visą maršrutą.
-                </div>
-                <div class="task-box"><strong>Užduotis:</strong> „Ar pamatysi nykštuko namą?“</div>
-            </div>
-            <div class="card-footer">
-                <span class="energy-icon-badge" title="Reikia šiek tiek pasiruošti">
-                    <svg class="flat-svg-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
-                </span>
-                <a href="https://www.google.com/maps/search/?api=1&query=Šakalinio+parkas" target="_blank" class="btn">Atidaryti žemėlapyje →</a>
-            </div>
-        </div>
-
-        <!-- 15 (Yellow) -->
-        <div class="card" data-category="hiking" data-energy="yellow">
-            <div class="card-content">
-                <div class="card-header-row">
-                    <h3>Šilėnų miško takas su sūpynėmis</h3>
-                </div>
-                <div class="details-line">⏱️ 2 val. | <span class="weather-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span> Gražiam orui</div>
-                <div class="kids-info">
-                    <strong>Ką veikiam:</strong> Miškas → takas → sūpynės → užkandis.<br>
-                    <strong>Pasiimti:</strong> Vandens, užkandžių.<br>
-                    <strong>2–3 m.:</strong> Labai geras derinys – pasivaikščiojimas + konkretus tikslas.
-                </div>
-                <div class="task-box"><strong>Užduotis:</strong> Ieškoti „didelio, mažo ir keisto medžio“.</div>
-            </div>
-            <div class="card-footer">
-                <span class="energy-icon-badge" title="Reikia pasiimti kelis daiktus">
-                    <svg class="flat-svg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0 0 20V2z"/></svg>
-                </span>
-                <a href="https://neriesparkas.lt/en/marsrutai/silenu-pazintinis-takas/" target="_blank" class="btn">Atidaryti žemėlapyje →</a>
-            </div>
-        </div>
-
-        <!-- 16 (Yellow) -->
-        <div class="card" data-category="lakes" data-energy="yellow">
-            <div class="card-content">
-                <div class="card-header-row">
-                    <h3>Žaliasis Balsio ežero rojus</h3>
-                </div>
-                <div class="details-line">⏱️ 2–3 val. | <span class="weather-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span> Šiltai dienai</div>
-                <div class="kids-info">
-                    <strong>Ką veikiam:</strong> Paplūdimys, smėlis, vanduo, miškas ir užkandžiai.<br>
-                    <strong>Pasiimti:</strong> Maudymosi daiktus, pledą, užkandžių.<br>
-                    <strong>2–3 m.:</strong> Vienas universaliausių vasaros variantų.
-                </div>
-                <div class="task-box"><strong>Užduotis:</strong> Surasti tris skirtingus gamtos lobius.</div>
-            </div>
-            <div class="card-footer">
-                <span class="energy-icon-badge" title="Reikia pasiimti kelis daiktus">
-                    <svg class="flat-svg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0 0 20V2z"/></svg>
-                </span>
-                <a href="https://www.google.com/maps/search/?api=1&query=Balsio+ežeras+Žalieji+ežerai" target="_blank" class="btn">Atidaryti žemėlapyje →</a>
-            </div>
-        </div>
-
-        <!-- 17 (Red) -->
-        <div class="card" data-category="activitie" data-energy="red">
-            <div class="card-content">
-                <div class="card-header-row">
-                    <h3>Laivelis Nerimi + Valakampių paplūdimys</h3>
-                </div>
-                <div class="details-line">⏱️ 2–3 val. | <span class="weather-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span> Gražiam orui</div>
-                <div class="kids-info">
-                    <strong>Ką veikiam:</strong> Trumpas plaukimas → išlipam → paplūdimys → užkandžiai.<br>
-                    <strong>Pasiimti:</strong> Priklauso nuo plaukimo, bet vaikui – vandens ir užkandžių.<br>
-                    <strong>2–3 m.:</strong> Labai „wow“, nes keičiasi veiklos.
-                </div>
-                <div class="task-box"><strong>Užduotis:</strong> Plaukiant ieškoti tiltų, paukščių ir kitų laivelių.</div>
-            </div>
-            <div class="card-footer">
-                <span class="energy-icon-badge" title="Reikia šiek tiek pasiruošti">
-                    <svg class="flat-svg-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
-                </span>
-                <a href="https://www.google.com/maps/search/?api=1&query=Valakampių+I+paplūdimys" target="_blank" class="btn">Atidaryti žemėlapyje →</a>
-            </div>
-        </div>
-
-        <!-- 18 (Yellow) -->
-        <div class="card" data-category="playground" data-energy="yellow">
-            <div class="card-content">
-                <div class="card-header-row">
-                    <h3>Piknikas ir žaidimų aikštelė Bernardinų sode</h3>
-                </div>
-                <div class="details-line">⏱️ 1,5–2 val. | <span class="weather-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span> Gražiam orui</div>
-                <div class="kids-info">
-                    <strong>Ką veikiam:</strong> Aikštelė → pledas → užkandžiai → trumpas pasivaikščiojimas.<br>
-                    <strong>Pasiimti:</strong> Pledą + užkandžių.<br>
-                    <strong>2–3 m.:</strong> Labai lengvas variantas po darželio.
-                </div>
-                <div class="task-box"><strong>Užduotis:</strong> Surasti gėles, fontaną ir „įdomiausią medį“.</div>
-            </div>
-            <div class="card-footer">
-                <span class="energy-icon-badge" title="Reikia pasiimti kelis daiktus">
-                    <svg class="flat-svg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0 0 20V2z"/></svg>
-                </span>
-                <a href="https://www.google.com/maps/search/?api=1&query=Bernardinų+sodas" target="_blank" class="btn">Atidaryti žemėlapyje →</a>
-            </div>
-        </div>
-
-        <!-- 19 (Green) -->
-        <div class="card" data-category="hiking" data-energy="green">
-            <div class="card-content">
-                <div class="card-header-row">
-                    <h3>Bohemiškas Užupis ir Vilnelė</h3>
-                </div>
-                <div class="details-line">⏱️ 1,5–2 val. | <span class="weather-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span> Gražiam orui</div>
-                <div class="kids-info">
-                    <strong>Ką veikiam:</strong> Einam palei Vilnelę, ieškom skulptūrų, žiūrim į vandenį, užsukam ledų.<br>
-                    <strong>Pasiimti:</strong> Nieko.<br>
-                    <strong>2–3 m.:</strong> Trumpam pasivaikščiojimui, ne ilgam miesto turui.
-                </div>
-                <div class="task-box"><strong>Užduotis:</strong> „Surask žmogų / gyvūną / keistą skulptūrą.“</div>
-            </div>
-            <div class="card-footer">
-                <span class="energy-icon-badge" title="Nulis planavimo">
-                    <svg class="flat-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="12" cy="12" r="9"/></svg>
-                </span>
-                <a href="https://www.google.com/maps/search/?api=1&query=Užupio+tiltas" target="_blank" class="btn">Atidaryti žemėlapyje →</a>
-            </div>
-        </div>
-
-        <!-- 20 (Yellow) -->
-        <div class="card" data-category="playground" data-energy="yellow">
-            <div class="card-content">
-                <div class="card-header-row">
-                    <h3>Su dviratuku Vingio parke</h3>
-                </div>
-                <div class="details-line">⏱️ 1,5–2,5 val. | <span class="weather-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span> Gražiam orui</div>
-                <div class="kids-info">
-                    <strong>Ką veikiam:</strong> Dviratukas → sustojimas aikštelėje → užkandis → dar šiek tiek važiuojam.<br>
-                    <strong>Pasiimti:</strong> Šalmą, vandens, užkandį.<br>
-                    <strong>2–3 m.:</strong> Labai gerai, jei jau važiuoja balansiniu / triratuku.
-                </div>
-                <div class="task-box"><strong>Užduotis:</strong> „Važiuojam iki kito medžio ir sustojam.“</div>
-            </div>
-            <div class="card-footer">
-                <span class="energy-icon-badge" title="Reikia pasiimti kelis daiktus">
-                    <svg class="flat-svg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0 0 20V2z"/></svg>
-                </span>
-                <a href="https://www.google.com/maps/search/?api=1&query=Vingio+parko+vaikų+žaidimų+aikštelė" target="_blank" class="btn">Atidaryti žemėlapyje →</a>
-            </div>
-        </div>
-
-        <!-- 21 (Yellow) -->
-        <div class="card" data-category="hiking" data-energy="yellow">
-            <div class="card-content">
-                <div class="card-header-row">
-                    <h3>Piknikas ir saulėlydis Kalnų parke</h3>
-                </div>
-                <div class="details-line">⏱️ 2–3 val. | <span class="weather-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span> Gražiam orui</div>
-                <div class="kids-info">
-                    <strong>Ką veikiam:</strong> Trumpas užlipimas → pledas → vakarienė → saulėlydis.<br>
-                    <strong>Pasiimti:</strong> Pledą ir vakarienę.<br>
-                    <strong>2–3 m.:</strong> Nereikia kopti toli – pats piknikas yra pagrindinė dalis.
-                </div>
-                <div class="task-box"><strong>Užduotis:</strong> „Kas pirmas pamatys miestą iš viršaus?“</div>
-            </div>
-            <div class="card-footer">
-                <span class="energy-icon-badge" title="Reikia pasiimti kelis daiktus">
-                    <svg class="flat-svg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0 0 20V2z"/></svg>
-                </span>
-                <a href="https://www.google.com/maps/search/?api=1&query=Kalnų+parkas+Vilnius" target="_blank" class="btn">Atidaryti žemėlapyje →</a>
-            </div>
-        </div>
-
-        <!-- 22 (Yellow) -->
-        <div class="card" data-category="hiking" data-energy="yellow">
-            <div class="card-content">
-                <div class="card-header-row">
-                    <h3>Gamtos paslaptys Verkių miško take</h3>
-                </div>
-                <div class="details-line">⏱️ 1,5–2,5 val. | <span class="weather-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span> Gražiam orui</div>
-                <div class="kids-info">
-                    <strong>Ką veikiam:</strong> Trumpas miško pasivaikščiojimas su gamtos paieškomis.<br>
-                    <strong>Pasiimti:</strong> Vandens, užkandį.<br>
-                    <strong>2–3 m.:</strong> Labai tinkamas formatas – vaikas turi ką veikti, bet nereikia daug aiškinimo.
-                </div>
-                <div class="task-box"><strong>Užduotis:</strong> Rasti lapą, kankorėžį, akmenį ir „keistą medį“.</div>
-            </div>
-            <div class="card-footer">
-                <span class="energy-icon-badge" title="Reikia pasiimti kelis daiktus">
-                    <svg class="flat-svg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0 0 20V2z"/></svg>
-                </span>
-                <a href="https://www.google.com/maps/search/?api=1&query=Verkių+regioninio+parko+ekologinis+takas" target="_blank" class="btn">Atidaryti žemėlapyje →</a>
-            </div>
-        </div>
-
-        <!-- 23 (Green) -->
-        <div class="card" data-category="activitie" data-energy="green">
-            <div class="card-content">
-                <div class="card-header-row">
-                    <h3>Botanikos sodas Vingio parke</h3>
-                </div>
-                <div class="details-line">⏱️ 1,5–2 val. | <span class="weather-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span> Gražiam orui</div>
-                <div class="kids-info">
-                    <strong>Ką veikiam:</strong> Lėtas pasivaikščiojimas, gėlės, vabzdžiai, medžiai.<br>
-                    <strong>Pasiimti:</strong> Vandens ir užkandį.<br>
-                    <strong>2–3 m.:</strong> Geras ramesnei popietei.
-                </div>
-                <div class="task-box"><strong>Užduotis:</strong> „Surask raudoną, geltoną ir baltą gėlę.“</div>
-            </div>
-            <div class="card-footer">
-                <span class="energy-icon-badge" title="Nulis planavimo">
-                    <svg class="flat-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="12" cy="12" r="9"/></svg>
-                </span>
-                <a href="https://www.google.com/maps/search/?api=1&query=Vingio+parko+botanikos+sodas" target="_blank" class="btn">Atidaryti žemėlapyje →</a>
-            </div>
-        </div>
-
-        <!-- 24 (Green) -->
-        <div class="card" data-category="playground" data-energy="green">
-            <div class="card-content">
-                <div class="card-header-row">
-                    <h3>Sapiegų parkas</h3>
-                </div>
-                <div class="details-line">⏱️ 1–2 val. | <span class="weather-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span> Gražiam orui</div>
-                <div class="kids-info">
-                    <strong>Ką veikiam:</strong> Parkas → žaidimai → rūmų apžiūra iš išorės → trumpas pasivaikščiojimas.<br>
-                    <strong>Pasiimti:</strong> Nieko ypatingo.<br>
-                    <strong>2–3 m.:</strong> Paprastas variantas, kai nesinori toli važiuoti.
-                </div>
-                <div class="task-box"><strong>Užduotis:</strong> „Surask didžiausią medį.“</div>
-            </div>
-            <div class="card-footer">
-                <span class="energy-icon-badge" title="Nulis planavimo">
-                    <svg class="flat-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="12" cy="12" r="9"/></svg>
-                </span>
-                <a href="https://www.google.com/maps/search/?api=1&query=Sapiegos+parkas+Vilnius" target="_blank" class="btn">Atidaryti žemėlapyje →</a>
-            </div>
-        </div>
-
-        <!-- 25 (Yellow) -->
-        <div class="card" data-category="activitie" data-energy="yellow">
-            <div class="card-content">
-                <div class="card-header-row">
-                    <h3>Lėktuvų stebėjimas ant Liepkalnio</h3>
-                </div>
-                <div class="details-line">⏱️ 1–1,5 val. | <span class="weather-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span> Gražiam orui</div>
-                <div class="kids-info">
-                    <strong>Ką veikiam:</strong> Atsisėdam ir laukiam lėktuvų.<br>
-                    <strong>Pasiimti:</strong> Užkandžių, galbūt pledą.<br>
-                    <strong>2–3 m.:</strong> Puikiai veikia, nereikia vaikščioti – tiesiog žiūrim į dangų.
-                </div>
-                <div class="task-box"><strong>Užduotis:</strong> Suskaičiuoti 3 lėktuvus.</div>
-            </div>
-            <div class="card-footer">
-                <span class="energy-icon-badge" title="Reikia pasiimti kelis daiktus">
-                    <svg class="flat-svg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0 0 20V2z"/></svg>
-                </span>
-                <a href="https://www.google.com/maps/search/?api=1&query=Liepkalnio+apzvalgos+aikstele" target="_blank" class="btn">Atidaryti žemėlapyje →</a>
-            </div>
-        </div>
-
-        <!-- 26 (Yellow) -->
-        <div class="card" data-category="activitie" data-energy="yellow">
-            <div class="card-content">
-                <div class="card-header-row">
-                    <h3>Nemenčinės dviračių ir riedučių parkas</h3>
-                </div>
-                <div class="details-line">⏱️ 2–3 val. | <span class="weather-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span> Gražiam orui</div>
-                <div class="kids-info">
-                    <strong>Ką veikiam:</strong> Dviratukas / paspirtukas → trasa → pertrauka → dar vienas ratas.<br>
-                    <strong>Pasiimti:</strong> Transporto priemonę, šalmą, vandens.<br>
-                    <strong>2–3 m.:</strong> Tik jei vieta turi tinkamų, saugių zonų tokio amžiaus vaikui.
-                </div>
-                <div class="task-box"><strong>Užduotis:</strong> „Važiuojam iki posūkio ir grįžtam.“</div>
-            </div>
-            <div class="card-footer">
-                <span class="energy-icon-badge" title="Reikia pasiimti kelis daiktus">
-                    <svg class="flat-svg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0 0 20V2z"/></svg>
-                </span>
-                <a href="https://www.google.com/maps/search/?api=1&query=Nemenčinė+pump+track" target="_blank" class="btn">Atidaryti žemėlapyje →</a>
-            </div>
-        </div>
-
-        <!-- 27 (Yellow) -->
-        <div class="card" data-category="activitie" data-energy="yellow">
-            <div class="card-content">
-                <div class="card-header-row">
-                    <h3>Saulėtekio mokomosios dviračių trasos</h3>
-                </div>
-                <div class="details-line">⏱️ 1–2 val. | <span class="weather-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span> Gražiam orui</div>
-                <div class="kids-info">
-                    <strong>Ką veikiam:</strong> Važiuojam trasoje, mokomės sustoti, sukti ir įveikti mažus posūkius.<br>
-                    <strong>Pasiimti:</strong> Dviratuką, šalmą, vandens.<br>
-                    <strong>2–3 m.:</strong> Geriausia vaikams, kurie jau drąsiai juda dviratuku.
-                </div>
-                <div class="task-box"><strong>Užduotis:</strong> „Nuvažiuok iki ženklo ir sustok.“</div>
-            </div>
-            <div class="card-footer">
-                <span class="energy-icon-badge" title="Reikia pasiimti kelis daiktus">
-                    <svg class="flat-svg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0 0 20V2z"/></svg>
-                </span>
-                <a href="https://www.google.com/maps/search/?api=1&query=Saulėtekio+dviračių+trasos" target="_blank" class="btn">Atidaryti žemėlapyje →</a>
-            </div>
-        </div>
-
-        <!-- 28 (Yellow) -->
-        <div class="card" data-category="hiking" data-energy="yellow">
-            <div class="card-content">
-                <div class="card-header-row">
-                    <h3>Sapieginės miško pažintinis takas</h3>
-                </div>
-                <div class="details-line">⏱️ 1,5–2,5 val. | <span class="weather-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span> Gražiam orui</div>
-                <div class="kids-info">
-                    <strong>Ką veikiam:</strong> Trumpas miško pasivaikščiojimas, lazdos, lapai, kankorėžiai ir sustojimas užkandžiui.<br>
-                    <strong>Pasiimti:</strong> Vandens, užkandžių, patogius batus.<br>
-                    <strong>2–3 m.:</strong> Nebandyti įveikti viso tako – apsisukti tada, kai vaikui dar smagu.
-                </div>
-                <div class="task-box"><strong>Užduotis:</strong> Surasti „didžiausią, mažiausią ir keisčiausią“ gamtos objektą.</div>
-            </div>
-            <div class="card-footer">
-                <span class="energy-icon-badge" title="Reikia pasiimti kelis daiktus">
-                    <svg class="flat-svg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0 0 20V2z"/></svg>
-                </span>
-                <a href="https://www.google.com/maps/search/?api=1&query=Sapieginės+pažintinis+takas" target="_blank" class="btn">Atidaryti žemėlapyje →</a>
-            </div>
-        </div>
-
-    </div>
+    <div class="grid-container" id="gridContainer"></div>
 
     <script>
-        const energyButtons = document.querySelectorAll('.energy-btn');
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const cards = document.querySelectorAll('.card');
+        // Pakartotinai naudojamos SVG piktogramos
+        const ICONS = {
+            sun: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>',
+            cloud: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>',
+            rain: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="16" y1="13" x2="16" y2="21"></line><line x1="8" y1="13" x2="8" y2="21"></line><line x1="12" y1="15" x2="12" y2="23"></line><path d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25"></path></svg>',
+            circle:        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><circle cx="12" cy="12" r="9"/></svg>',
+            'half-circle': '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0 0 20V2z"/></svg>',
+            'full-circle': '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>',
+            home: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>',
+            tree: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"></circle><line x1="12" y1="15" x2="12" y2="22"></line></svg>'
+        };
 
-        let currentEnergy = 'all';
-        let currentCategory = 'all';
+        const FILTER_ORDER = ['energy', 'vibe', 'category', 'place'];
 
-        function filterCards() {
-            cards.forEach(card => {
-                const cardEnergy = card.getAttribute('data-energy');
-                const cardCategory = card.getAttribute('data-category');
+        function icon(name) {
+            return ICONS[name] || '';
+        }
 
-                const matchesEnergy = (currentEnergy === 'all' || cardEnergy === currentEnergy);
-                const matchesCategory = (currentCategory === 'all' || cardCategory === currentCategory);
+        function escapeHtml(str) {
+            return String(str).replace(/[&<>"']/g, ch => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+            }[ch]));
+        }
 
-                if (matchesEnergy && matchesCategory) {
-                    card.style.display = 'flex';
+        function renderCard(item) {
+            const f = item.filters || {};
+            const info = item.info || {};
+            const vibes = Array.isArray(f.vibe) ? f.vibe : (f.vibe ? [f.vibe] : []);
+            const places = Array.isArray(f.place) ? f.place : (f.place ? [f.place] : []);
+            const energyOpt = (optionsByType.energy && optionsByType.energy[f.energy]) || {};
+            const placesHtml = places
+                .map(id => (optionsByType.place && optionsByType.place[id]) || null)
+                .filter(Boolean)
+                .map(o => `<span class="place-icon">${icon(o.icon)}</span> ${escapeHtml(o.title)}`)
+                .join(' · ');
+
+            return `
+        <div class="card" data-category="${escapeHtml(item.category)}" data-energy="${escapeHtml(f.energy)}" data-vibe="${escapeHtml(vibes.join(' '))}" data-place="${escapeHtml(places.join(' '))}">
+            <div class="card-content">
+                <div class="card-header-row">
+                    <h3>${escapeHtml(item.title)}</h3>
+                </div>
+                <div class="details-line">⏱️ ${escapeHtml(item.duration)} | ${placesHtml}</div>
+                <div class="kids-info">
+                    <strong>Ką veikiam:</strong> ${escapeHtml(item.activity)}<br>
+                    <strong>Pasiimti:</strong> ${escapeHtml(info.bring)}<br>
+                    <strong>2–3 m.:</strong> ${escapeHtml(info.ageNote)}
+                </div>
+                <div class="task-box"><strong>Užduotis:</strong> ${escapeHtml(info.task)}</div>
+            </div>
+            <div class="card-footer">
+                <span class="energy-icon-badge" title="${escapeHtml(energyOpt.title || '')}">
+                    ${icon(energyOpt.icon)}
+                </span>
+                <a href="${escapeHtml(item.url)}" target="_blank" class="btn">Atidaryti žemėlapyje →</a>
+            </div>
+        </div>`;
+        }
+
+        const gridContainer = document.getElementById('gridContainer');
+        const filtersGrid = document.getElementById('filtersGrid');
+
+        let cards = [];
+        let optionsByType = {};
+        let active = {};   // { energy: 'all', vibe: 'all', category: 'all', place: ['indoor','outdoor'], ... }
+
+        // Pradinės filtrų reikšmės: segmentuoti (multi) – visi pažymėti; kiti – 'all'
+        function initActive(filters) {
+            const a = {};
+            Object.keys(filters).forEach(type => {
+                a[type] = filters[type].control === 'segmented'
+                    ? filters[type].options.map(o => o.id)
+                    : 'all';
+            });
+            return a;
+        }
+
+        // filters[type].options -> { id: option } paieškai kortelėse
+        function indexOptions(filters) {
+            const byType = {};
+            Object.keys(filters).forEach(type => {
+                byType[type] = {};
+                filters[type].options.forEach(opt => { byType[type][opt.id] = opt; });
+            });
+            return byType;
+        }
+
+        function buildFilters(filters) {
+            const types = FILTER_ORDER.filter(type => filters[type]);
+            
+            // Sugrupuojam category ir place jei jie yra
+            const hasCategory = types.includes('category');
+            const hasPlace = types.includes('place');
+
+            let html = '';
+            
+            const renderGroup = (type) => {
+                const def = filters[type];
+                let controlHtml;
+                let groupClass = 'filter-group';
+                if (type === 'energy') groupClass += ' energy-filter';
+                if (type === 'vibe') groupClass += ' vibe-filter';
+                if (type === 'category') groupClass += ' category-filter';
+                if (type === 'place') groupClass += ' place-filter';
+                let optionsClass = 'filter-options';
+
+                if (def.control === 'segmented') {
+                    const segs = def.options.map(opt => {
+                        const activeCls = active[type].includes(opt.id) ? ' active' : '';
+                        const iconHtml = opt.icon ? `<span class="chip-icon">${icon(opt.icon)}</span>` : '';
+                        return `<button class="seg-opt${activeCls}" data-type="${type}" data-value="${escapeHtml(opt.id)}" data-multi="1">${iconHtml}${escapeHtml(opt.title)}</button>`;
+                    }).join('');
+                    controlHtml = `<div class="segmented-toggle">${segs}</div>`;
+                } else if (type === 'vibe' || type === 'energy') {
+                    const options = def.options.some(o => o.id === 'all')
+                            ? def.options
+                            : [{ id: 'all', title: 'Visi' }].concat(def.options);
+                    
+                    const items = options.map(opt => {
+                        const activeCls = opt.id === active[type] ? ' active' : '';
+                        const iconHtml = opt.icon ? `<span class="chip-icon">${icon(opt.icon)}</span> ` : '';
+                        return `
+                            <li class="category-menu-item">
+                                <a href="#" class="category-menu-link${activeCls}" data-type="${type}" data-value="${escapeHtml(opt.id)}" onclick="return false;">
+                                    <span class="category-menu-content">
+                                        <span class="category-menu-text">${iconHtml}${escapeHtml(opt.title)}</span>
+                                    </span>
+                                    <span class="category-menu-link-shadow"></span>
+                                </a>
+                            </li>`;
+                    }).join('');
+                    controlHtml = `<ul class="category-menu-list">${items}</ul>`;
                 } else {
-                    card.style.display = 'none';
+                    const options = (type === 'place')
+                        ? def.options
+                        : (def.options.some(o => o.id === 'all')
+                            ? def.options
+                            : [{ id: 'all', title: 'Visi' }].concat(def.options));
+
+                    controlHtml = options.map(opt => {
+                        const activeCls = opt.id === active[type] ? ' active' : '';
+                        const iconHtml = opt.icon ? `<span class="chip-icon">${icon(opt.icon)}</span>` : '';
+                        const titleAttr = opt.description ? ` title="${escapeHtml(opt.description)}"` : '';
+                        return `<button class="btn-opt${activeCls}" data-type="${type}" data-value="${escapeHtml(opt.id)}"${titleAttr}>${iconHtml}${escapeHtml(opt.title)}</button>`;
+                    }).join('');
                 }
+
+                return `
+        <div class="${groupClass}">
+            <h2>${escapeHtml(def.label)}</h2>
+            <div class="${optionsClass}">${controlHtml}</div>
+        </div>`;
+            };
+
+            const processedTypes = new Set();
+            
+            types.forEach(type => {
+                if (processedTypes.has(type)) return;
+                
+                if ((type === 'category' || type === 'place') && hasCategory && hasPlace) {
+                    if (processedTypes.has('category') || processedTypes.has('place')) return;
+                    html += `<div class="filter-group category-place-container">
+                        ${renderGroup('category')}
+                        ${renderGroup('place')}
+                    </div>`;
+                    processedTypes.add('category');
+                    processedTypes.add('place');
+                } else {
+                    html += renderGroup(type);
+                    processedTypes.add(type);
+                }
+            });
+
+            filtersGrid.innerHTML = html;
+
+            filtersGrid.querySelectorAll('button[data-type], a[data-type]').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const type = button.getAttribute('data-type');
+                    if (button.getAttribute('data-multi')) {
+                        button.classList.toggle('active');
+                        const value = button.getAttribute('data-value');
+                        const arr = active[type];
+                        const i = arr.indexOf(value);
+                        if (i === -1) arr.push(value); else arr.splice(i, 1);
+                    } else {
+                        filtersGrid.querySelectorAll('[data-type="' + type + '"]').forEach(b => b.classList.remove('active'));
+                        button.classList.add('active');
+                        active[type] = button.getAttribute('data-value');
+                    }
+                    filterCards();
+                });
             });
         }
 
-        energyButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                energyButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                currentEnergy = button.getAttribute('data-energy');
-                filterCards();
+        function filterCards() {
+            cards.forEach(card => {
+                const cardVibes = (card.getAttribute('data-vibe') || '').split(' ').filter(Boolean);
+                const cardPlaces = (card.getAttribute('data-place') || '').split(' ').filter(Boolean);
+                const placeSel = active.place || [];
+                // multi-select: kortelė tinka, jei bent viena jos vieta pažymėta (arba nepažymėta nė viena)
+                const matchesPlace = placeSel.length === 0 || cardPlaces.some(p => placeSel.includes(p));
+                const ok =
+                    (active.energy === 'all'   || card.getAttribute('data-energy')   === active.energy) &&
+                    matchesPlace &&
+                    (active.category === 'all' || card.getAttribute('data-category') === active.category) &&
+                    (active.vibe === 'all'     || cardVibes.includes(active.vibe));
+                card.style.display = ok ? 'flex' : 'none';
             });
-        });
+        }
 
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                currentCategory = button.getAttribute('data-filter');
+        Promise.all([
+            fetch('filters.json', { cache: 'no-store' }).then(r => r.json()),
+            fetch('activities.json', { cache: 'no-store' }).then(r => r.json())
+        ])
+            .then(([filters, activities]) => {
+                optionsByType = indexOptions(filters);
+                active = initActive(filters);
+                buildFilters(filters);
+                gridContainer.innerHTML = activities.map(renderCard).join('');
+                cards = document.querySelectorAll('.card');
                 filterCards();
+            })
+            .catch(err => {
+                gridContainer.innerHTML = '<p>Nepavyko įkelti veiklų. Patikrink, ar puslapis atidarytas per serverį (ne per file://).</p>';
+                console.error('Nepavyko įkelti duomenų:', err);
             });
-        });
     </script>
 
 </body>
