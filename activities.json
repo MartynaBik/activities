@@ -1,5 +1,28 @@
 [
   {
+    "title": "Šaltiniai, dviratis ir UNO nuotykiai Antakalnyje",
+    "category": "activity",
+    "filters": {
+      "energy": "some-planning",
+      "vibe": [
+        "adventure",
+        "outdoor",
+        "fun"
+      ],
+      "place": [
+        "outdoor"
+      ]
+    },
+    "duration": "2–4 val.",
+    "activity": "Sėdam ant dviračių ir važiuojam palei Nerį iki Spalvotųjų šaltinių. Ten trumpam paliekam dviračius, nusileidžiam pažiūrėti į spalvotą vandens tėkmę ir miško griovas, o tada – į UNO parko vaikų žaidimo aikštelę (nemokama)",
+    "info": {
+      "bring": "Dviračius, šalmus, vandens ir užkandžių. Patogius batus, jei norėsis tyrinėti šaltinius.",
+      "ageNote": "Labai geras variantas aktyvesnei dienai.",
+      "task": "„Surask spalvotą akmenį prie šaltinio. O tada – kas pirmas pamatys lyną UNO parke?“"
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Spalvotieji+šaltiniai+Vilnius"
+  },
+  {
     "title": "Nameliai medžiuose Vytenio parke",
     "category": "playground",
     "filters": {
@@ -639,26 +662,28 @@
     "url": "https://www.google.com/maps/search/?api=1&query=Valstybės+pažinimo+centras+Vilnius"
   },
   {
-    "title": "Markučių parkas + muziejaus teritorija",
-    "category": "activity",
+    "title": "Markučių dvaras ir parkas",
+    "category": "museum",
     "filters": {
       "energy": "some-planning",
       "vibe": [
         "calm",
-        "adventure"
+        "adventure",
+        "wow"
       ],
       "place": [
+        "indoor",
         "outdoor"
       ]
     },
     "duration": "1,5–2 val.",
-    "activity": "Pasivaikštom po parką, apžiūrim muziejaus teritoriją, ieškom gražių medžių ir įdomių vietų.",
+    "activity": "Užeinam į Markučių dvaro muziejų, apžiūrim seną dvarą ir ieškom vietų, kurios pasakoja apie Markučių istoriją. Tada išeinam į parką pasivaikščioti, apžiūrim teritoriją, medžius ir aplinkinius takus.",
     "info": {
-      "bring": "Vandens ir užkandį.",
-      "ageNote": "Tinka ramiam pasivaikščiojimui, kai norisi kažko daugiau nei paprasto parko.",
-      "task": "„Surask didžiausią medį ir įdomiausią pastatą.“"
+      "bring": "Nieko ypatingo.",
+      "ageNote": "Geras variantas, kai norisi suderinti trumpą muziejų su pasivaikščiojimu lauke. Muziejuje verta neužsibūti per ilgai, ypač su mažesniu vaiku.",
+      "task": "„Surask dvaro pastatą, gražiausią medį ir kažką, kas susiję su traukiniais.“"
     },
-    "url": "https://www.google.com/maps/search/?api=1&query=Markučių+parkas+Vilnius"
+    "url": "https://www.google.com/maps/search/?api=1&query=Markučių+dvaro+muziejus+Vilnius"
   },
   {
     "title": "MO muziejus + „surask spalvą“ žaidimas",
@@ -792,5 +817,128 @@
       "task": "„Išlipę suraskim geriausią aikštelę.“"
     },
     "url": "https://www.google.com/maps/search/?api=1&query=vaikų+žaidimų+aikštelė+Vilnius"
+  },
+  {
+    "title": "Pučkorių žygis su kelione autobusu",
+    "category": "hiking",
+    "filters": {
+      "energy": "some-planning",
+      "vibe": [
+        "adventure",
+        "calm",
+        "fun"
+      ],
+      "place": [
+        "outdoor"
+      ]
+    },
+    "duration": "2–3 val.",
+    "activity": "Mašiną paliekam prie Pučkorių piliakalnio ir einam link saulės laikrodžio, palei Nerį. Pakeliui užsukam prie Pučkorių dvaro, o tada nueinam iki stotelės „Pučkorių atodanga“. Sėdam į autobusą ir pavažiuojam vos vieną stotelę – vaikui jau mažas nuotykis. Išlipam, grįžtam iki mašinos ir važiuojam namo.",
+    "info": {
+      "bring": "Patogius batus, vandens ir užkandžių. Autobusui prireiks viešojo transporto bilieto.",
+      "ageNote": "Geras variantas vaikui, kuriam jau įdomu ne tik eiti, bet ir kažkur nuvažiuoti. Didžioji pramoga čia – pats maršrutas ir kelionė autobusu.",
+      "task": "„Surask saulės laikrodį. O tada – važiuojam autobusu lyg į tikrą kelionę!“"
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Pučkorių+piliakalnis+Vilnius"
+  },
+  {
+    "title": "Pelkės paslaptis Baltojoje Vokėje",
+    "category": "hiking",
+    "filters": {
+      "energy": "some-planning",
+      "vibe": [
+        "adventure",
+        "nature",
+        "wow"
+      ],
+      "place": [
+        "outdoor"
+      ]
+    },
+    "duration": "1–2 val.",
+    "activity": "Einam į Baltosios Vokės šlapynę tyrinėti vietos, kuri kadaise buvo didžiulis durpynas. Einam senu keliu, kuriuo kažkada važinėjo durpes vežęs geležinkelis, ieškom augalų ir gyvių, o raudonus akinius naudojam kaip tikri pelkės tyrinėtojai.",
+    "info": {
+      "bring": "Patogius batus, vandens ir užkandžių. Po lietaus gali būti šlapia ir purvina.",
+      "ageNote": "Labiausiai tinka smalsiam vaikui, kuriam įdomu ieškoti, pastebėti ir tyrinėti. Takas apie 1 km į vieną pusę, todėl su mažesniu vaiku verta neskubėti.",
+      "task": "„Surask, kur kažkada važiavo traukinys. O tada – 3 skirtingus augalus arba gyvius.“"
+    },
+    "url": "https://slapyne.lt/pazintinis-takas/"
+  },
+  {
+    "title": "Saugomų teritorijų nacionalinis lankytojų centras",
+    "category": "museum",
+    "filters": {
+      "energy": "no-planning",
+      "vibe": [
+        "fun",
+        "wow",
+        "nature"
+      ],
+      "place": [
+        "indoor"
+      ]
+    },
+    "duration": "1–2 val.",
+    "activity": "Einam į Nacionalinį saugomų teritorijų lankytojų centrą ir tyrinėjam Lietuvos gamtą ne iš knygos, o per garsus, vaizdus ir interaktyvius dalykus. Klausomės paukščių, lendam į „šikšnosparnių“ kino salę, spaudom mygtukus ir žiūrim, kiek skirtingų Lietuvos vietų galima atrasti.",
+    "info": {
+      "bring": "Nieko ypatingo.",
+      "ageNote": "Labai geras variantas mažesniam vaikui, nes nereikia ilgai vaikščioti ar tyliai sėdėti. Vaikams iki 7 metų lankymas nemokamas.",
+      "task": "„Surask gyvūną, kuris miega beveik visą gyvenimą. O tada – išgirsk paukštį, kurio balsą atpažinsi.“"
+    },
+    "url": "https://saugoma.lt/lt/nacionalinis-lankytoju-centras"
+  },
+  {
+    "title": "Verkių rūmai + regioninio parko pažinimo centras",
+    "category": "activity",
+    "filters": {
+      "energy": "some-planning",
+      "vibe": ["fun","wow","nature","adventure"],
+      "place": ["indoor","outdoor"]
+    },
+    "duration": "2–3 val.",
+    "activity": "Pradedam regioninio parko pažinimo centre: apžiūrim tikrą skruzdėlyną, užuodžiam persikais kvepiančius vabzdžius, žiūrim į piliakalnius iš šikšnosparnio skrydžio, kuriam savo reljefą ir mokomės atpažinti gyvūnų pėdsakus bei balsus. Tada einam pasivaikščioti po Verkių rūmų teritoriją ir apžiūrim rūmus, parką bei vaizdus nuo kalvų.",
+    "info": {
+      "bring": "Vandens ir užkandžių, patogius batus.",
+      "ageNote": "Labai geras derinys 3–7 m. vaikui: pirmoje dalyje daug interaktyvaus pažinimo, antroje – erdvė išsivaikščioti ir tyrinėti lauką.",
+      "task": "„Surask tikrą skruzdėlyną, atpažink vieno gyvūno pėdsakus, o tada Verkių parke surask gražiausią vaizdą.“"
+    },
+    "url": "https://saugoma.lt/lt/pavilniu-ir-verkiu-regioniniu-parku-lankytoju-centras"
+  },
+  {
+    "title": "Žaislų muziejus",
+    "category": "museum",
+    "filters": {
+      "energy": "no-planning",
+      "vibe": ["fun","calm","wow"],
+      "place": ["indoor"]
+    },
+    "duration": "1–1,5 val.",
+    "activity": "Einam į Žaislų muziejų pažiūrėti, su kokiais žaislais žaidė vaikai prieš šimtus metų, o kai kuriuos jų galima ir patiems išbandyti. Ieškom seniausio, keisčiausio ir labiausiai pažįstamo žaislo.",
+    "info": {
+      "bring": "Nieko ypatingo.",
+      "ageNote": "Labai tinka mažesniems vaikams, nes muziejus orientuotas į žaidimą ir žaislų išbandymą, o ne vien žiūrėjimą į eksponatus.",
+      "task": "„Surask žaislą, kuris tau labiausiai patinka, ir tokį, su kuriuo galėtų žaisti tavo proseneliai.“"
+    },
+    "url": "https://visitvilnius.lt/lt/lankytinos-vietos/zaislu-muziejus"
+  },
+  {
+    "title": "Meškinų muziejus",
+    "category": "museum",
+    "filters": {
+      "energy": "no-planning",
+      "vibe": ["fun","wow","calm"],
+      "place": ["indoor"]
+    },
+    "duration": "1–1,5 val.",
+    "activity": "Einam į Meškinų muziejų, kur laukia daugiau nei 3000 meškiukų ir įvairūs kambariai, kuriuos smagu tyrinėti. Ieškom didžiausio, mažiausio, keisčiausio ir labiausiai patikusio meškiuko.",
+    "info": {
+      "bring": "Nieko ypatingo.",
+      "ageNote": "Ypač smagu mažesniems vaikams, kuriems patinka gyvūnai, žaislai ir spalvingos erdvės.",
+      "task": "„Surask didžiausią meškiuką, mažiausią meškiuką ir tą, kurį norėtum parsinešti namo.“",
+      "scheduleNote": "Šeštadienį ir sekmadienį muziejus dirba 10:00–15:00 val. be registracijos. Kitomis dienomis būtina iš anksto susitarti. Jei planuojam važiuoti darbo dieną, prieš važiuojant reikia paskambinti."
+    },
+    "url": "https://visitvilnius.lt/lt/lankytinos-vietos/meskinumuziejus-plushy-b55"
   }
+
+
 ]
