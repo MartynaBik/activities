@@ -1,0 +1,796 @@
+[
+  {
+    "title": "Nameliai medžiuose Vytenio parke",
+    "category": "playground",
+    "filters": {
+      "energy": "some-planning",
+      "vibe": [
+        "fun",
+        "adventure"
+      ],
+      "place": [
+        "outdoor"
+      ]
+    },
+    "duration": "1–2 val.",
+    "activity": "Einam tiesiai į aikštelę, leidžiam vaikui laipioti, suptis, slėptis ir tyrinėti namelius. Tėvams – kava išsinešimui.",
+    "info": {
+      "bring": "Nieko ypatingo.",
+      "ageNote": "Labai tinka 2–3 m. vaikams. Nereikia jokio papildomo plano.",
+      "task": "„Surask namelį, į kurį galima užlipti.“"
+    },
+    "url": "https://vytenioparkas.lt"
+  },
+  {
+    "title": "Smėlis ir maudynės Tapeliuose",
+    "category": "lakes",
+    "filters": {
+      "energy": "full-planning",
+      "vibe": [
+        "summer",
+        "fun"
+      ],
+      "place": [
+        "outdoor"
+      ]
+    },
+    "duration": "2–3 val.",
+    "activity": "Smėlis, vanduo, akmenukų rinkimas, basos kojos ir užkandžiai ant pledo.",
+    "info": {
+      "bring": "Maudymosi daiktus, rankšluostį, pledą, užkandžių, atsarginius drabužius.",
+      "ageNote": "Vienas geriausių variantų vasarai.",
+      "task": "Surinkti 5 gražius akmenukus arba pagaliukus."
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Tapelių+paplūdimys"
+  },
+  {
+    "title": "Mokslas ir mygtukų spaudymas",
+    "category": "museum",
+    "filters": {
+      "energy": "some-planning",
+      "vibe": [
+        "fun",
+        "wow"
+      ],
+      "place": [
+        "indoor"
+      ]
+    },
+    "duration": "1–2 val.",
+    "activity": "Einam ten, kur galima spaudyti, sukti, traukti ir stebėti, o ne bandome vaikui paaiškinti mokslą. 😄",
+    "info": {
+      "bring": "Nieko ypatingo.",
+      "ageNote": "Rinktis trumpą apsilankymą, nes dėmesys greitai keičiasi.",
+      "task": "„Surask 3 dalykus, kuriuos galima paspausti.“"
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Energetikos+ir+technikos+muziejus"
+  },
+  {
+    "title": "Lentelės ir pelkės mistika Varnikiuose",
+    "category": "hiking",
+    "filters": {
+      "energy": "full-planning",
+      "vibe": [
+        "adventure",
+        "calm"
+      ],
+      "place": [
+        "outdoor"
+      ]
+    },
+    "duration": "2–3 val.",
+    "activity": "Trumpas pasivaikščiojimas takais, žiūrim į vandenį, medžius, samaną, klausomės paukščių.",
+    "info": {
+      "bring": "Vandens, užkandžių, patogius batus.",
+      "ageNote": "Labai gerai, jei vaikui patinka vaikščioti. Nesitikėti, kad nueis visą taką.",
+      "task": "„Kas pirmas pamatys vandenį? O didelį medį?“"
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Varnikų+pažintinis+takas"
+  },
+  {
+    "title": "Kukulių pietūs IKEA",
+    "category": "food",
+    "filters": {
+      "energy": "no-planning",
+      "vibe": [
+        "calm"
+      ],
+      "place": [
+        "indoor"
+      ]
+    },
+    "duration": "1–2 val.",
+    "activity": "Važiuojam ne „į IKEA apsipirkti“, o valgyti kukulių ir patirti nuotykį.",
+    "info": {
+      "bring": "Nieko.",
+      "ageNote": "Puikus variantas, kai tėvai pavargę ir norisi beveik nulio planavimo.",
+      "task": "Išsirinkti vieną dalyką, kuris labiausiai patinka IKEA."
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=IKEA+Vilnius"
+  },
+  {
+    "title": "Kairėnų Botanikos sodas",
+    "category": "activity",
+    "filters": {
+      "energy": "full-planning",
+      "vibe": [
+        "calm",
+        "adventure"
+      ],
+      "place": [
+        "outdoor"
+      ]
+    },
+    "duration": "2–3 val.",
+    "activity": "Vaikštom tarp augalų, ieškom didžiausio medžio, žiūrim į gėles ir vabzdžius.",
+    "info": {
+      "bring": "Užkandžių, vandens.",
+      "ageNote": "Labai geras amžius – vaikui nereikia suprasti, kas yra botanikos sodas.",
+      "task": "„Surask geltoną gėlę, didžiausią lapą ir vabzdį.“"
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Kairėnų+Botanikos+sodas"
+  },
+  {
+    "title": "Piknikas ir traukiniai prie Rokantiškių",
+    "category": "hiking",
+    "filters": {
+      "energy": "some-planning",
+      "vibe": [
+        "fun",
+        "wow"
+      ],
+      "place": [
+        "outdoor"
+      ]
+    },
+    "duration": "1,5–2 val.",
+    "activity": "Pledas, užkandžiai ir laukiam traukinio.",
+    "info": {
+      "bring": "Pledą, užkandžių, vandens.",
+      "ageNote": "Labai gerai, nes traukinio laukimas pats savaime tampa žaidimu.",
+      "task": "„Kokios spalvos bus kitas traukinys?“"
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Rokantiškių+piliakalnis"
+  },
+  {
+    "title": "Ramios popietės Dvarčionių ežere",
+    "category": "lakes",
+    "filters": {
+      "energy": "full-planning",
+      "vibe": [
+        "calm",
+        "summer"
+      ],
+      "place": [
+        "outdoor"
+      ]
+    },
+    "duration": "1,5–2 val.",
+    "activity": "Vanduo, pasivaikščiojimas, akmenukų mėtymas, užkandžiai.",
+    "info": {
+      "bring": "Vandens, užkandžių, pledą.",
+      "ageNote": "Geras lėtos popietės variantas.",
+      "task": "Rasti „patį gražiausią“ akmenuką."
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Dvarčionių+ežeras"
+  },
+  {
+    "title": "Moderni aikštelė Reformatų sode",
+    "category": "playground",
+    "filters": {
+      "energy": "no-planning",
+      "vibe": [
+        "fun"
+      ],
+      "place": [
+        "outdoor"
+      ]
+    },
+    "duration": "1–1,5 val.",
+    "activity": "Tiesiai į aikštelę, o po to trumpas pasivaikščiojimas po Senamiestį.",
+    "info": {
+      "bring": "Nieko ypatingo.",
+      "ageNote": "Idealu, kai po darželio norisi greito ir paprasto išėjimo.",
+      "task": "„Parodyk, kur aukščiausia vieta.“"
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Reformatų+sodas+Vilnius"
+  },
+  {
+    "title": "Pūčkorių atodanga ir upės pakrantė",
+    "category": "hiking",
+    "filters": {
+      "energy": "some-planning",
+      "vibe": [
+        "adventure",
+        "calm"
+      ],
+      "place": [
+        "outdoor"
+      ]
+    },
+    "duration": "2–3 val.",
+    "activity": "Atodanga → miško takas → upė → užkandis.",
+    "info": {
+      "bring": "Vandens, užkandžių, patogius batus.",
+      "ageNote": "Laikytis trumpesnio maršruto, nes visas pasivaikščiojimas gali būti per daug.",
+      "task": "„Surask upę ir didžiausią medį.“"
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Pūčkorių+atodanga"
+  },
+  {
+    "title": "Geležinkelių muziejus + vagonai",
+    "category": "museum",
+    "filters": {
+      "energy": "no-planning",
+      "vibe": [
+        "wow",
+        "fun"
+      ],
+      "place": [
+        "indoor",
+        "outdoor"
+      ]
+    },
+    "duration": "1–2 val.",
+    "activity": "Traukiniai, vagonai, stotis, dideli ratai ir daug „žiūrėk!“.",
+    "info": {
+      "bring": "Nieko.",
+      "ageNote": "Ypač gerai traukinių gerbėjams.",
+      "task": "„Surask didžiausią traukinį.“"
+    },
+    "url": "https://ltgmuziejus.lt"
+  },
+  {
+    "title": "Vakaro saulėlydis Gelūžėje",
+    "category": "lakes",
+    "filters": {
+      "energy": "full-planning",
+      "vibe": [
+        "calm",
+        "summer"
+      ],
+      "place": [
+        "outdoor"
+      ]
+    },
+    "duration": "2–3 val.",
+    "activity": "Paplūdimys → vanduo → užkandžiai → saulėlydis.",
+    "info": {
+      "bring": "Pledą, vakarienę, vandens, maudymosi daiktus.",
+      "ageNote": "Puikus būdas padaryti „ypatingą“ paprastą vakarą.",
+      "task": "Stebėti, kaip keičiasi dangaus spalva."
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Gelūžės+ežeras+Pilaitė"
+  },
+  {
+    "title": "Vakarinis traukinys į Naująją Vilnią",
+    "category": "activity",
+    "filters": {
+      "energy": "full-planning",
+      "vibe": [
+        "adventure",
+        "wow",
+        "fun"
+      ],
+      "place": [
+        "indoor"
+      ]
+    },
+    "duration": "2–3 val.",
+    "activity": "Traukiniu važiuojam kelias stoteles → išlipam → pasivaikštom → randam aikštelę / užkandį → grįžtam.",
+    "info": {
+      "bring": "Užkandį ir vandens.",
+      "ageNote": "Čia pats važiavimas yra pramoga.",
+      "task": "„Susirask vietą prie lango ir skaičiuok traukinius.“"
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Naujosios+Vilnios+geležinkelio+stotis"
+  },
+  {
+    "title": "Šakalinio pasakų miškas",
+    "category": "playground",
+    "filters": {
+      "energy": "full-planning",
+      "vibe": [
+        "adventure",
+        "fun"
+      ],
+      "place": [
+        "outdoor"
+      ]
+    },
+    "duration": "1,5–2,5 val.",
+    "activity": "Einam miško taku ir apsimetam, kad ieškom miško gyventojų.",
+    "info": {
+      "bring": "Užkandžių, vandens.",
+      "ageNote": "Geriau trumpas pasivaikščiojimas nei bandymas įveikti visą maršrutą.",
+      "task": "„Ar pamatysi nykštuko namą?“"
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Šakalinio+parkas"
+  },
+  {
+    "title": "Šilėnų miško takas su sūpynėmis",
+    "category": "hiking",
+    "filters": {
+      "energy": "full-planning",
+      "vibe": [
+        "adventure",
+        "fun"
+      ],
+      "place": [
+        "outdoor"
+      ]
+    },
+    "duration": "2 val.",
+    "activity": "Miškas → takas → sūpynės → užkandis.",
+    "info": {
+      "bring": "Vandens, užkandžių.",
+      "ageNote": "Labai geras derinys – pasivaikščiojimas + konkretus tikslas.",
+      "task": "Ieškoti „didelio, mažo ir keisto medžio“."
+    },
+    "url": "https://neriesparkas.lt/en/marsrutai/silenu-pazintinis-takas/"
+  },
+  {
+    "title": "Žaliasis Balsio ežero rojus",
+    "category": "lakes",
+    "filters": {
+      "energy": "full-planning",
+      "vibe": [
+        "summer",
+        "calm"
+      ],
+      "place": [
+        "outdoor"
+      ]
+    },
+    "duration": "2–3 val.",
+    "activity": "Paplūdimys, smėlis, vanduo, miškas ir užkandžiai.",
+    "info": {
+      "bring": "Maudymosi daiktus, pledą, užkandžių.",
+      "ageNote": "Vienas universaliausių vasaros variantų.",
+      "task": "Surasti tris skirtingus gamtos lobius."
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Balsio+ežeras+Žalieji+ežerai"
+  },
+  {
+    "title": "Laivelis Nerimi + Valakampių paplūdimys",
+    "category": "activity",
+    "filters": {
+      "energy": "some-planning",
+      "vibe": [
+        "wow",
+        "summer",
+        "adventure"
+      ],
+      "place": [
+        "outdoor"
+      ]
+    },
+    "duration": "2–3 val.",
+    "activity": "Trumpas plaukimas → išlipam → paplūdimys → užkandžiai.",
+    "info": {
+      "bring": "Plaukimo reikmenis, vandens ir užkandžių.",
+      "ageNote": "Labai „wow“, nes keičiasi veiklos.",
+      "task": "Plaukiant ieškoti tiltų, paukščių ir kitų laivelių."
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Valakampių+I+paplūdimys"
+  },
+  {
+    "title": "Piknikas ir žaidimų aikštelė Bernardinų sode",
+    "category": "playground",
+    "filters": {
+      "energy": "some-planning",
+      "vibe": [
+        "fun",
+        "calm"
+      ],
+      "place": [
+        "outdoor"
+      ]
+    },
+    "duration": "1,5–2 val.",
+    "activity": "Aikštelė → pledas → užkandžiai → trumpas pasivaikščiojimas.",
+    "info": {
+      "bring": "Pledą ir užkandžių.",
+      "ageNote": "Labai lengvas variantas po darželio.",
+      "task": "Surasti gėles, fontaną ir „įdomiausią medį“."
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Bernardinų+sodas"
+  },
+  {
+    "title": "Bohemiškas Užupis ir Vilnelė",
+    "category": "hiking",
+    "filters": {
+      "energy": "no-planning",
+      "vibe": [
+        "calm",
+        "adventure"
+      ],
+      "place": [
+        "outdoor"
+      ]
+    },
+    "duration": "1,5–2 val.",
+    "activity": "Einam palei Vilnelę, ieškom skulptūrų, žiūrim į vandenį, užsukam ledų.",
+    "info": {
+      "bring": "Nieko.",
+      "ageNote": "Trumpam pasivaikščiojimui, ne ilgam miesto turui.",
+      "task": "„Surask žmogų / gyvūną / keistą skulptūrą.“"
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Užupio+tiltas"
+  },
+  {
+    "title": "Su dviratuku Vingio parke",
+    "category": "activity",
+    "filters": {
+      "energy": "full-planning",
+      "vibe": [
+        "fun",
+        "adventure"
+      ],
+      "place": [
+        "outdoor"
+      ]
+    },
+    "duration": "1,5–2,5 val.",
+    "activity": "Dviratukas → sustojimas aikštelėje → užkandis → dar šiek tiek važiuojam.",
+    "info": {
+      "bring": "Dviratuką, šalmą, vandens, užkandį.",
+      "ageNote": "Labai gerai, jei jau važiuoja balansiniu / triratuku.",
+      "task": "„Važiuojam iki kito medžio ir sustojam.“"
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Vingio+parko+vaikų+žaidimų+aikštelė"
+  },
+  {
+    "title": "Piknikas ir saulėlydis Kalnų parke",
+    "category": "hiking",
+    "filters": {
+      "energy": "some-planning",
+      "vibe": [
+        "calm",
+        "summer"
+      ],
+      "place": [
+        "outdoor"
+      ]
+    },
+    "duration": "2–3 val.",
+    "activity": "Trumpas užlipimas → pledas → vakarienė → saulėlydis.",
+    "info": {
+      "bring": "Pledą ir vakarienę.",
+      "ageNote": "Nereikia kopti toli – pats piknikas yra pagrindinė dalis.",
+      "task": "„Kas pirmas pamatys miestą iš viršaus?“"
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Kalnų+parkas+Vilnius"
+  },
+  {
+    "title": "Gamtos paslaptys Verkių miško take",
+    "category": "hiking",
+    "filters": {
+      "energy": "some-planning",
+      "vibe": [
+        "adventure",
+        "calm"
+      ],
+      "place": [
+        "outdoor"
+      ]
+    },
+    "duration": "1,5–2,5 val.",
+    "activity": "Trumpas miško pasivaikščiojimas su gamtos paieškomis.",
+    "info": {
+      "bring": "Vandens, užkandį.",
+      "ageNote": "Labai tinkamas formatas – vaikas turi ką veikti, bet nereikia daug aiškinimo.",
+      "task": "Rasti lapą, kankorėžį, akmenį ir „keistą medį“."
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Verkių+regioninio+parko+ekologinis+takas"
+  },
+  {
+    "title": "Botanikos sodas Vingio parke",
+    "category": "activity",
+    "filters": {
+      "energy": "some-planning",
+      "vibe": [
+        "calm",
+        "summer"
+      ],
+      "place": [
+        "outdoor"
+      ]
+    },
+    "duration": "1,5–2 val.",
+    "activity": "Lėtas pasivaikščiojimas, gėlės, vabzdžiai, medžiai.",
+    "info": {
+      "bring": "Vandens ir užkandį.",
+      "ageNote": "Geras ramesnei popietei.",
+      "task": "„Surask raudoną, geltoną ir baltą gėlę.“"
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Vingio+parko+botanikos+sodas"
+  },
+  {
+    "title": "Sapiegų parkas",
+    "category": "playground",
+    "filters": {
+      "energy": "no-planning",
+      "vibe": [
+        "calm",
+        "fun"
+      ],
+      "place": [
+        "outdoor"
+      ]
+    },
+    "duration": "1–2 val.",
+    "activity": "Parkas → žaidimai → rūmų apžiūra iš išorės → trumpas pasivaikščiojimas.",
+    "info": {
+      "bring": "Nieko ypatingo.",
+      "ageNote": "Paprastas variantas, kai nesinori toli važiuoti.",
+      "task": "„Surask didžiausią medį.“"
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Sapiegos+parkas+Vilnius"
+  },
+  {
+    "title": "Lėktuvų stebėjimas ant Liepkalnio",
+    "category": "activity",
+    "filters": {
+      "energy": "some-planning",
+      "vibe": [
+        "wow",
+        "calm"
+      ],
+      "place": [
+        "outdoor"
+      ]
+    },
+    "duration": "1–1,5 val.",
+    "activity": "Atsisėdam ir laukiam lėktuvų.",
+    "info": {
+      "bring": "Užkandžių, galbūt pledą.",
+      "ageNote": "Puikiai veikia, nereikia vaikščioti – tiesiog žiūrim į dangų.",
+      "task": "Suskaičiuoti 3 lėktuvus."
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Liepkalnio+apzvalgos+aikstele"
+  },
+  {
+    "title": "Nemenčinės dviračių ir riedučių parkas",
+    "category": "activity",
+    "filters": {
+      "energy": "full-planning",
+      "vibe": [
+        "fun",
+        "adventure"
+      ],
+      "place": [
+        "outdoor"
+      ]
+    },
+    "duration": "2–3 val.",
+    "activity": "Dviratukas / paspirtukas → trasa → pertrauka → dar vienas ratas.",
+    "info": {
+      "bring": "Transporto priemonę, šalmą, vandens.",
+      "ageNote": "Tik jei vieta turi tinkamų, saugių zonų tokio amžiaus vaikui.",
+      "task": "„Važiuojam iki posūkio ir grįžtam.“"
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Nemenčinė+pump+track"
+  },
+  {
+    "title": "Saulėtekio mokomosios dviračių trasos",
+    "category": "activity",
+    "filters": {
+      "energy": "full-planning",
+      "vibe": [
+        "fun",
+        "adventure"
+      ],
+      "place": [
+        "outdoor"
+      ]
+    },
+    "duration": "1–2 val.",
+    "activity": "Važiuojam trasoje, mokomės sustoti, sukti ir įveikti mažus posūkius.",
+    "info": {
+      "bring": "Dviratuką, šalmą, vandens.",
+      "ageNote": "Geriausia vaikams, kurie jau drąsiai juda dviratuku.",
+      "task": "„Nuvažiuok iki ženklo ir sustok.“"
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Saulėtekio+dviračių+trasos"
+  },
+  {
+    "title": "Sapieginės miško pažintinis takas",
+    "category": "hiking",
+    "filters": {
+      "energy": "some-planning",
+      "vibe": [
+        "adventure",
+        "calm"
+      ],
+      "place": [
+        "outdoor"
+      ]
+    },
+    "duration": "1,5–2,5 val.",
+    "activity": "Trumpas miško pasivaikščiojimas, lazdos, lapai, kankorėžiai ir sustojimas užkandžiui.",
+    "info": {
+      "bring": "Vandens, užkandžių, patogius batus.",
+      "ageNote": "Nebandyti įveikti viso tako – apsisukti tada, kai vaikui dar smagu.",
+      "task": "Surasti „didžiausią, mažiausią ir keisčiausią“ gamtos objektą."
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Sapieginės+pažintinis+takas"
+  },
+  {
+    "title": "Valstybės pažinimo centras",
+    "category": "museum",
+    "filters": {
+      "energy": "no-planning",
+      "vibe": [
+        "wow",
+        "fun"
+      ],
+      "place": [
+        "indoor"
+      ]
+    },
+    "duration": "1–2 val.",
+    "activity": "Interaktyviai tyrinėjam ekspozicijas, spaudžiam, žiūrim, ieškom įdomiausių dalykų ir nesistengiam visko apžiūrėti.",
+    "info": {
+      "bring": "Nieko ypatingo.",
+      "ageNote": "Geriausia trumpam apsilankymui – rinktis tai, kas vaikui įdomiausia.",
+      "task": "„Surask 3 dalykus, kurie tau įdomiausi.“"
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Valstybės+pažinimo+centras+Vilnius"
+  },
+  {
+    "title": "Markučių parkas + muziejaus teritorija",
+    "category": "activity",
+    "filters": {
+      "energy": "some-planning",
+      "vibe": [
+        "calm",
+        "adventure"
+      ],
+      "place": [
+        "outdoor"
+      ]
+    },
+    "duration": "1,5–2 val.",
+    "activity": "Pasivaikštom po parką, apžiūrim muziejaus teritoriją, ieškom gražių medžių ir įdomių vietų.",
+    "info": {
+      "bring": "Vandens ir užkandį.",
+      "ageNote": "Tinka ramiam pasivaikščiojimui, kai norisi kažko daugiau nei paprasto parko.",
+      "task": "„Surask didžiausią medį ir įdomiausią pastatą.“"
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Markučių+parkas+Vilnius"
+  },
+  {
+    "title": "MO muziejus + „surask spalvą“ žaidimas",
+    "category": "museum",
+    "filters": {
+      "energy": "no-planning",
+      "vibe": [
+        "wow",
+        "fun"
+      ],
+      "place": [
+        "indoor"
+      ]
+    },
+    "duration": "1–2 val.",
+    "activity": "Einam į muziejų ir vietoj bandymo viską suprasti ieškom spalvų, formų ir paveikslų, kurie patraukia vaiko dėmesį.",
+    "info": {
+      "bring": "Nieko ypatingo.",
+      "ageNote": "Geriausia trumpa ir žaisminga pažintis su muziejumi.",
+      "task": "„Surask raudoną, mėlyną ir geltoną kūrinį.“"
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=MO+muziejus+Vilnius"
+  },
+  {
+    "title": "Literatų gatvė + „surask paveikslėlį“ žaidimas",
+    "category": "activity",
+    "filters": {
+      "energy": "no-planning",
+      "vibe": [
+        "fun",
+        "calm"
+      ],
+      "place": [
+        "outdoor"
+      ]
+    },
+    "duration": "1–1,5 val.",
+    "activity": "Lėtai einam Literatų gatve ir ieškom ant sienos esančių mažų meno kūrinių, o po to užsukam ledų.",
+    "info": {
+      "bring": "Nieko ypatingo.",
+      "ageNote": "Labai geras trumpas pasivaikščiojimas po Senamiestį.",
+      "task": "„Surask 3 skirtingus paveikslėlius ant sienos.“"
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Literatų+gatvė+Vilnius"
+  },
+  {
+    "title": "Gedimino kalno papėdė + funikulierius",
+    "category": "activity",
+    "filters": {
+      "energy": "some-planning",
+      "vibe": [
+        "wow",
+        "adventure"
+      ],
+      "place": [
+        "outdoor"
+      ]
+    },
+    "duration": "1–1,5 val.",
+    "activity": "Ateinam prie Gedimino kalno, pasivaikštom papėdėje ir kylam funikulieriumi – pats važiavimas tampa pagrindine pramoga.",
+    "info": {
+      "bring": "Vandens ir užkandį.",
+      "ageNote": "Ypač gerai mažam vaikui, kuriam patinka transportas ir naujos patirtys.",
+      "task": "„Kas pirmas pamatys Gedimino pilį?“"
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Gedimino+kalno+funikulierius+Vilnius"
+  },
+  {
+    "title": "Valakampių paplūdimys + miško pasivaikščiojimas",
+    "category": "lakes",
+    "filters": {
+      "energy": "some-planning",
+      "vibe": [
+        "summer",
+        "adventure"
+      ],
+      "place": [
+        "outdoor"
+      ]
+    },
+    "duration": "2–3 val.",
+    "activity": "Paplūdimys → smėlis → vanduo → trumpas pasivaikščiojimas miške → užkandžiai ant pledo.",
+    "info": {
+      "bring": "Maudymosi daiktus, rankšluostį, pledą, vandens ir užkandžių.",
+      "ageNote": "Geras variantas, kai norisi suderinti vandens pramogas ir mišką.",
+      "task": "„Surask 3 gamtos lobius: akmenuką, lapą ir pagaliuką.“"
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Valakampių+paplūdimys+Vilnius"
+  },
+  {
+    "title": "Biblioteka + knygų pasirinkimo nuotykis",
+    "category": "activity",
+    "filters": {
+      "energy": "no-planning",
+      "vibe": [
+        "calm",
+        "fun"
+      ],
+      "place": [
+        "indoor"
+      ]
+    },
+    "duration": "1–1,5 val.",
+    "activity": "Einam į biblioteką, leidžiam vaikui pačiam rinktis knygas, pavartom jas vietoje ir išsirenkam vieną parsinešti.",
+    "info": {
+      "bring": "Bibliotekos kortelę, jei reikia.",
+      "ageNote": "Puikus ramus variantas, kai norisi veiklos be didelio planavimo.",
+      "task": "„Išsirink knygą su gyvūnu ir knygą su mėgstamiausia spalva.“"
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=biblioteka+Vilnius"
+  },
+  {
+    "title": "Kelionė miesto autobusu į naują rajoną + aikštelės paieška",
+    "category": "activity",
+    "filters": {
+      "energy": "some-planning",
+      "vibe": [
+        "adventure",
+        "fun"
+      ],
+      "place": [
+        "indoor",
+        "outdoor"
+      ]
+    },
+    "duration": "1,5–2,5 val.",
+    "activity": "Sėdam į autobusą, važiuojam į rajoną, kuriame retai būnam, išlipam ir ieškom geriausios vaikų aikštelės.",
+    "info": {
+      "bring": "Vandens ir užkandį.",
+      "ageNote": "Čia pats važiavimas tampa nuotykiu, todėl nebūtina suplanuoti daug veiklų.",
+      "task": "„Išlipę suraskim geriausią aikštelę.“"
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=vaikų+žaidimų+aikštelė+Vilnius"
+  }
+]
